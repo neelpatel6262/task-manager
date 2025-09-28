@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "DM Mono", monospace; */
+  font-family: "Bebas Neue", sans-serif;
+  /* background-color:oklch(0.869 0.022 252.894); */
+}
+/* 
+h1 {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.form {
+  background-color: blanchedalmond;
+  padding: 120px 100px;
+}
+
+.cta {
+  background-color: blanchedalmond;
+  display: flex;
+  align-items: center;
+}
+
+.primary {
+  background-color: chartreuse;
+  width: 122px;
+  height: 22px;
+  margin-left: 100px;
+  margin-right: 22px;
+}
+
+.secondary {
+  background-color: red;
+  width: 122px;
+  height: 22px;
+  color: whitesmoke;
+} */
+
+
+#fristcode{
+  text-align: center;
+  margin-top: 100px;
+  font-size: 44px;
+  color: #333;
+  font-weight: bold;
+  
+}

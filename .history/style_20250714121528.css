@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.btn{
+  width: 144px;
+  height: 44px;
+  background-color: orange;
+  color: white;
+  margin-left: 222px;
+  margin-top: 122px;
+  font-size: 18px;
+
+}

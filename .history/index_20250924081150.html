@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">🤖 AI Task Manager</h1>
+      <p class="subtitle">Stay organized with AI assistance</p>
+    </header>
+
+    <!-- AI Features Panel -->
+    <div class="ai-panel">
+      <div class="ai-toggle">
+        <button id="aiToggleBtn" class="ai-toggle-btn">
+          <span class="ai-icon">🧠</span>
+          <span>AI Assistant</span>
+          <span class="toggle-arrow">▼</span>
+        </button>
+      </div>
+      
+      <div id="aiFeatures" class="ai-features">
+        <!-- AI Task Generator -->
+        <div class="ai-feature">
+          <h4>📝 Smart Task Generator</h4>
+          <div class="ai-input-group">
+            <input type="text" id="aiPrompt" placeholder="Describe your goal (e.g., 'plan a birthday party')" maxlength="200">
+            <button id="generateTasks" class="ai-btn">Generate Tasks</button>
+          </div>
+        </div>
+
+        <!-- AI Task Analyzer -->
+        <div class="ai-feature">
+          <h4>🔍 Task Insights</h4>
+          <button id="analyzeTasksBtn" class="ai-btn secondary">Analyze My Tasks</button>
+          <div id="taskAnalysis" class="analysis-result"></div>
+        </div>
+
+        <!-- AI Productivity Tips -->
+        <div class="ai-feature">
+          <h4>💡 Smart Suggestions</h4>
+          <button id="getAdviceBtn" class="ai-btn secondary">Get Productivity Tips</button>
+          <div id="productivityTips" class="tips-result"></div>
+        </div>
+
+        <!-- AI Priority Sorter -->
+        <div class="ai-feature">
+          <h4>⚡ Priority Optimizer</h4>
+          <button id="prioritizeBtn" class="ai-btn secondary">Auto-Prioritize Tasks</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-container">
+        <input type="text" id="taskInput" placeholder="What needs to be done?" maxlength="100">
+        <div class="input-buttons">
+          <button id="aiSuggestBtn" class="suggest-btn" title="Get AI suggestions">✨</button>
+          <button id="addBtn" class="add-btn" type="button">
+            <span class="btn-text">Add Task</span>
+            <span class="btn-icon">+</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- AI Suggestions Dropdown -->
+      <div id="aiSuggestions" class="ai-suggestions hidden">
+        <div class="suggestions-header">
+          <span>🤖 AI Suggestions</span>
+          <button id="closeSuggestions" class="close-btn">×</button>
+        </div>
+        <div id="suggestionsList" class="suggestions-list"></div>
+      </div>
+    </div>
+
+    <div class="tasks-section">
+      <div class="tasks-header">
+        <div class="task-counter">
+          <span id="taskCount">0</span> tasks remaining
+        </div>
+        <div class="header-buttons">
+          <button id="smartSortBtn" class="smart-btn" title="AI Smart Sort">🧠</button>
+          <button id="clearAllBtn" class="clear-all-btn" type="button">
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      <div class="tasks-container">
+        <ul id="tasksList" class="tasks-list"></ul>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">🤭</div>
+          <h3>No tasks yet</h3>
+          <p>Add a task above or use AI to generate tasks</p>
+          <button id="quickStartBtn" class="quick-start-btn">🚀 Quick Start with AI</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Loading Modal -->
+  <div id="aiModal" class="ai-modal hidden">
+    <div class="modal-content">
+      <div class="loading-spinner"></div>
+      <p id="loadingText">AI is thinking...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

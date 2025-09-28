@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrify Labs Home Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Base styles for desktop */
+    .navbar-section {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px 80px;
+      background-color: #fff;
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      width: 44px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      flex: 1;
+      margin-left: 44px;
+    }
+
+    .nav-links a {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #171717;
+      font-size: 16px;
+      letter-spacing: 1.4px;
+      font-weight: 600;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover {
+      color: #1447e6;
+      font-weight: 800;
+    }
+
+    .navbar-btn {
+      width: 144px;
+      height: 48px;
+      border-radius: 6px;
+      background-color: #1447e6;
+      border: 1px solid #1447e6;
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .navbar-btn:hover {
+      box-shadow: 0px 4px 4px 0px rgba(20, 71, 230, 0.44);
+    }
+
+    .navbar-btn-conatiner {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #171717;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+    }
+
+    .mobile-nav-content {
+      background: white;
+      width: 280px;
+      height: 100%;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-nav.active .mobile-nav-content {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .mobile-nav .nav-links {
+      flex-direction: column;
+      margin: 0;
+      gap: 20px;
+    }
+
+    /* Hero section */
+    .hero-section {
+      background-color: #eff6ff;
+      display: flex;
+      align-items: center;
+      min-height: 600px;
+      padding: 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-left-content {
+      flex: 1;
+      max-width: 808px;
+      z-index: 2;
+    }
+
+    .crm-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      gap: 20px;
+    }
+
+    .frame {
+      width: 104px;
+      height: 104px;
+      flex-shrink: 0;
+    }
+
+    .frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .rating-section-container {
+      display: flex;
+      padding: 10px;
+      background-color: #bcdaff;
+      border-radius: 12px;
+      border: 1px solid #1447e6;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rating {
+      display: flex;
+      gap: 4px;
+    }
+
+    .rating img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .rating-heading {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .hero-heading {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.2;
+      text-transform: capitalize;
+      margin-bottom: 46px;
+    }
+
+    .hero-highlights {
+      color: #1447e6;
+      text-decoration: underline;
+    }
+
+    .subheading {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 46px;
+      color: #666;
+    }
+
+    .hero-cta-actions {
+      display: flex;
+      gap: 28px;
+    }
+
+    .hero-btn, .hero-secondary-btn {
+      height: 48px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 12px 20px;
+    }
+
+    .hero-btn {
+      background-color: #1447e6;
+      border: 1px solid #1447e6;
+      color: #fff;
+    }
+
+    .hero-btn:hover {
+      box-shadow: 0px 4px 4px 0px rgba(20, 71, 230, 0.44);
+    }
+
+    .hero-secondary-btn {
+      background-color: transparent;
+      border: 1px solid #1447e6;
+      color: #000000;
+    }
+
+    .hero-secondary-btn:hover {
+      background-color: #1447e6;
+      color: #fff;
+    }
+
+    .right-content {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 552px;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .right-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* About section */
+    .about-section {
+      background-color: #eff6ff;
+      padding: 100px 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .who-we-are-section {
+      margin-bottom: 65px;
+    }
+
+    .about-heading {
+      font-size: 24px;
+      color: #1447e6;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .sub-heading {
+      font-size: 24px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .about-content-section {
+      display: flex;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .placeholder {
+      flex: 1;
+    }
+
+    .placeholder img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .about-right-content {
+      flex: 1;
+    }
+
+    .content-one, .content-two {
+      margin-bottom: 60px;
+    }
+
+    .content-one h1, .content-two h1 {
+      font-size: 86px;
+      font-weight: 400;
+      color: #1447e6;
+    }
+
+    .content-one h4, .content-two h4 {
+      font-size: 24px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .content-one p, .content-two p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .content-cta-section-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 62px;
+    }
+
+    .content-cta-section-container h1 {
+      font-size: 24px;
+      color: #1447e6;
+      text-transform: uppercase;
+    }
+
+    .about-cta {
+      border: 1px solid #1447e6;
+      margin-top: 12px;
+    }
+
+    /* Service section */
+    .service-section {
+      background-color: #eff6ff;
+      padding: 80px 100px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .service-intro-section {
+      text-align: center;
+      margin-bottom: 78px;
+    }
+
+    .service-body-heading {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #1447e6;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .service-heading {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .services-cards-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 38px;
+      margin-bottom: 78px;
+    }
+
+    .service-card-one, .service-card-two, .service-card-three {
+      border: 2px solid #1447e6;
+      border-radius: 12px;
+      padding: 33px 29px;
+      background: white;
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      background-color: #1447e6;
+      border-radius: 6px;
+      margin-bottom: 84px;
+      padding: 9px;
+      box-shadow: 0px 4px 4px 0px rgba(20, 71, 230, 0.44);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      width: 44px;
+      height: 44px;
+      color: #fff;
+    }
+
+    .service-card-heading, .service-card-two-heading, .service-card-three-heading {
+      font-size: 24px;
+      line-height: 1.6;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .service-card-subheading, .service-card-two-subheading, .service-card-three-subheading {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    .service-btn {
+      display: block;
+      margin: 0 auto;
+      border-radius: 6px;
+      background-color: #1447e6;
+      border: 1px solid #1447e6;
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .service-btn:hover {
+      box-shadow: 0px 4px 4px 0px rgba(20, 71, 230, 0.44);
+    }
+
+    /* Product section */
+    .product-section {
+      background-color: #eff6ff;
+      padding: 80px 100px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .product-intro-section {
+      margin-bottom: 68px;
+    }
+
+    .product-body-heading {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #1447e6;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .product-heading {
+      font-size: 48px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    .products-section {
+      margin-bottom: 77px;
+    }
+
+    .top-section, .lower-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 49px;
+      margin-bottom: 68px;
+    }
+
+    .product-one {
+      position: relative;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .best-seller {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #1447e6;
+      color: #fff;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 10px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
+    .product-placeholder img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-name {
+      font-size: 24px;
+      font-weight: 400;
+      text-transform: capitalize;
+    }
+
+    .product-price {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1447e6;
+    }
+
+    .product-primary-btn-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1447e6;
+      border: 1px solid #1447e6;
+      color: #fff;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease-in-out;
+      gap: 4px;
+      margin: 0 auto;
+    }
+
+    .product-primary-btn-container:hover {
+      box-shadow: 0px 4px 4px 0px rgba(20, 71, 230, 0.44);
+    }
+
+    /* Library section */
+    .library-section {
+      background-color: #eff6ff;
+      padding: 100px 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .library-intro {
+      text-align: center;
+      margin-bottom: 78px;
+    }
+
+    .library-intro p {
+      font-size: 24px;
+      color: #1447e6;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .library-intro h1 {
+      font-size: 48px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 33px;
+      margin-bottom: 78px;
+    }
+
+    .card-one {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card-one img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 22px;
+    }
+
+    .card-one-content p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .card-one-content h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #0c0a09;
+    }
+
+    .card-one-content h4 {
+      font-size: 16px;
+      color: #666;
+      font-weight: 400;
+      margin-bottom: 22px;
+    }
+
+    .person-details {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .person-details img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin: 0;
+    }
+
+    .person-info h4 {
+      font-size: 14px;
+      color: #171717;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .person-library-content {
+      display: flex;
+      gap: 8px;
+    }
+
+    .person-library-content h4, .person-library-content h5 {
+      font-size: 12px;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .library-primary-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1447e6;
+      border: 1px solid #1447e6;
+      color: #fff;
+      margin: 0 auto;
+      border-radius: 6px;
+      padding: 12px 20px;
+      gap: 12px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .library-primary-btn:hover {
+      box-shadow: 0px 4px 4px 0px rgba(20, 71, 230, 0.44);
+    }
+
+    /* Blog section */
+    .blog-section {
+      background-color: #eff6ff;
+      padding: 100px 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .blog-intro-section {
+      margin-bottom: 112px;
+    }
+
+    .blog-intro-section p {
+      font-size: 24px;
+      color: #1447e6;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    .blog-intro-section h1 {
+      font-size: 48px;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .blog-one {
+      display: flex;
+      gap: 29px;
+      margin-bottom: 64px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .blog-one img {
+      width: 442px;
+      height: 288px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .blog-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .blog-heading h1 {
+      font-size: 24px;
+      margin-bottom: 23px;
+      color: #0c0a09;
+    }
+
+    .blog-heading p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .blog-cta-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .blog-cta-content p {
+      font-size: 16px;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    .blog-cta-content h4 {
+      font-size: 16px;
+      color: #1447e6;
+      text-transform: uppercase;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .line {
+      border: 1px solid #1447e6;
+      margin-top: 12px;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background-color: #1447e6;
+      padding: 143px 80px;
+      text-align: center;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .cta-intro-section p {
+      font-size: 24px;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 42px;
+    }
+
+    .cta-intro-section h1 {
+      font-size: 48px;
+      font-weight: 600;
+      color: #ffffff;
+      text-transform: capitalize;
+      margin-bottom: 69px;
+      line-height: 1.2;
+    }
+
+    .cta-email-form {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      border-radius: 44px;
+      padding: 6px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      margin-bottom: 50px;
+      max-width: 622px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .input-container {
+      flex: 1;
+      position: relative;
+      padding: 0 42px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+    }
+
+    .email-input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 18px;
+      font-weight: 400;
+      color: #1f2937;
+    }
+
+    .input-placeholder {
+      position: absolute;
+      left: 42px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #9ca3af;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .email-btn {
+      width: 182px;
+      height: 76px;
+      background: linear-gradient(135deg, #1447e6 0%, #0f3bc4 100%);
+      border-radius: 38px;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cta-btn h4 {
+      font-size: 36px;
+      color: #ffffff;
+      text-transform: capitalize;
+      font-weight: 400;
+    }
+
+    .cta-btn h4 span {
+      text-decoration: underline;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Footer section */
+    .footer-section {
+      background: linear-gradient(
+        to bottom,
+        rgba(238, 246, 255, 0.94) 27%,
+        rgba(238, 246, 255, 1) 41%,
+        rgba(238, 246, 255, 0.97) 56%,
+        rgba(186, 216, 255, 0.95) 66%,
+        rgba(88, 161, 255, 0.91) 86%,
+        rgba(20, 71, 230, 0.88) 100%
+      );
+      padding: 100px 80px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .footer-section-content {
+      display: flex;
+      margin-bottom: 86px;
+    }
+
+    .footer-brand {
+      flex: 1;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      font-size: 32px;
+      text-transform: uppercase;
+      font-weight: 600;
+      gap: 8px;
+      margin-bottom: 42px;
+    }
+
+    .footer-logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer-contact, .footer-email {
+      font-size: 24px;
+      font-weight: 600;
+      text-decoration: underline;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 88px;
+    }
+
+    .navigation-content, .follow-content, .legel-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navigation-content h4, .follow-content h4, .legel-content h4 {
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+
+    .navigation-content a, .follow-content a, .legel-content a {
+      text-decoration: none;
+      color: #171717;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    .new-tag {
+      background-color: #1447e6;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      position: absolute;
+      margin-left: 10px;
+      margin-top: -5px;
+    }
+
+    .footer-line {
+      border: 1px solid #171717;
+      opacity: 0.6;
+      margin-bottom: 28px;
+    }
+
+    .footer-content p {
+      text-align: center;
+      font-weight: 400;
+      text-transform: capitalize;
+    }
+
+    /* SVG Icons */
+    .lucide {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .hero-section, .about-section, .service-section, 
+      .product-section, .library-section, .blog-section, 
+      .cta-section, .footer-section {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      .navbar-section {
+        padding: 20px 40px;
+      }
+
+      .right-content {
+        width: 400px;
+      }
+
+      .hero-heading {
+        font-size: 42px;
+      }
+
+      .service-heading, .product-heading, 
+      .library-intro h1, .blog-intro-section h1, 
+      .cta-intro-section h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 968px) {
+      .nav-links {
+        display: none;
+      }
+
+      .navbar-btn {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .hero-left-content {
+        order: 2;
+        margin-top: 40px;
+      }
+
+      .right-content {
+        position: relative;
+        order: 1;
+        width: 100%;
+        height: 300px;
+      }
+
+      .about-content-section {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .services-cards-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .top-section, .lower-section {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-one {
+        flex-direction: column;
+      }
+
+      .blog-one img {
+        width: 100%;
+        height: 200px;
+      }
+
+      .footer-section-content {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .hero-heading {
+        font-size: 28px;
+      }
+
+      .service-heading, .product-heading, 
+      .library-intro h1, .blog-intro-section h1, 
+      .cta-intro-section h1 {
+        font-size: 28px;
+      }
+
+      .content-one h1, .content-two h1 {
+        font-size: 48px;
+      }
+
+      .sub-heading, .about-heading, .service-body-heading,
+      .product-body-heading, .library-intro p, 
+      .blog-intro-section p, .cta-intro-section p {
+        font-size: 18px;
+      }
+
+      .footer-logo {
+        font-size: 24px;
+      }
+
+      .footer-contact, .footer-email {
+        font-size: 18px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .cta-email-form {
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 20px;
+        gap: 20px;
+      }
+
+      .input-container {
+        padding: 0 20px;
+        height: 50px;
+      }
+
+      .email-input {
+        font-size: 16px;
+      }
+
+      .input-placeholder {
+        font-size: 16px;
+        left: 20px;
+      }
+
+      .email-btn {
+        width: 100%;
+        height: 50px;
+        border-radius: 25px;
+      }
+
+      .cta-btn h4 {
+        font-size: 24px;
+        margin-top: 30px;
+      }
+
+      .product-placeholder img {
+        height: 250px;
+      }
+
+      .card-one img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rating-section-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+
+      .rating-heading {
+        font-size: 10px;
+      }
+
+      .hero-heading {
+        font-size: 24px;
+        line-height: 1.3;
+      }
+
+      .subheading {
+        font-size: 16px;
+      }
+
+      .content-one h1, .content-two h1 {
+        font-size: 36px;
+      }
+
+      .service-heading, .product-heading, 
+      .library-intro h1, .blog-intro-section h1, 
+      .cta-intro-section h1 {
+        font-size: 24px;
+        line-height: 1.3;
+      }
+
+      .service-card-heading, .service-card-two-heading, 
+      .service-card-three-heading {
+        font-size: 20px;
+      }
+
+      .product-name, .product-price {
+        font-size: 20px;
+      }
+
+      .card-one-content h2 {
+        font-size: 24px;
+      }
+
+      .blog-heading h1 {
+        font-size: 20px;
+      }
+
+      .footer-section {
+        padding: 60px 20px;
+      }
+
+      .footer-logo {
+        font-size: 20px;
+      }
+
+      .footer-contact, .footer-email {
+        font-size: 16px;
+      }
+
+      .navigation-content h4, .follow-content h4, .legel-content h4 {
+        font-size: 18px;
+      }
+    }
+
+    /* Interactive JavaScript for mobile menu */
+    .mobile-nav.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- navbar section -->
+  <div class="navbar-section">
+    <div class="navbar-container">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#1447e6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+          <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+        </svg>
+      </div>
+      <div class="nav-links">
+        <a href="">about</a>
+        <a href="">service</a>
+        <a href="">product</a>
+        <a href="">library</a>
+        <a href="">blogs</a>
+      </div>
+      <button class="navbar-btn">
+        <div class="navbar-btn-conatiner">
+          contact us 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </div>
+      </button>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-content">
+      <button class="mobile-nav-close" onclick="toggleMobileMenu()">✕</button>
+      <div class="nav-links">
+        <a href="" onclick="toggleMobileMenu()">about</a>
+        <a href="" onclick="toggleMobileMenu()">service</a>
+        <a href="" onclick="toggleMobileMenu()">product</a>
+        <a href="" onclick="toggleMobileMenu()">library</a>
+        <a href="" onclick="toggleMobileMenu()">blogs</a>
+      </div>
+      <button class="navbar-btn" style="margin-top: 20px;">
+        <div class="navbar-btn-conatiner">
+          contact us 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- hero-section -->
+  <div class="hero-section">
+    <div class="hero-left-content">
+      <div class="heading-section">
+        <div class="crm-section">
+          <div class="frame">
+            <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" viewBox="0 0 24 24" fill="none" stroke="#1447e6" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <circle cx="9" cy="9" r="2"/>
+              <path d="M21 15.5c-2.3-1.3-5.2-1.3-7.5 0"/>
+              <path d="M21 19.5c-2.3-1.3-5.2-1.3-7.5 0"/>
+            </svg>
+          </div>
+          <div class="rating-section">
+            <div class="rating-section-container">
+              <div class="rating">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700">
+                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700">
+                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700">
+                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700">
+                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700">
+                  <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                </svg>
+              </div>
+              <div class="rating-heading">
+                rated 5.0 by 40+ happy customers!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-heading">
+          <span class="hero-highlights">electrifylabs</span> is powering the future of innovation
+        </div>
+      </div>
+
+      <div class="hero-subheading">
+        <div class="subheading">
+          At ElectrifyLabs, we are dedicated to transforming ideas into cutting-edge technology solutions. Join us on a journey to innovate and electrify the future.
+        </div>
+
+        <div class="hero-cta-actions">
+          <button class="hero-btn">
+            <div class="hero-btn-container">
+              contact us 
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                <path d="M7 7h10v10" />
+                <path d="M7 17 17 7" />
+              </svg>
+            </div>
+          </button>
+
+          <button class="hero-secondary-btn">
+            <div class="hero-secondary-btn-container">
+              view all products 
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-content">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 552 804" fill="none">
+        <defs>
+          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1447e6;stop-opacity:0.1" />
+            <stop offset="100%" style="stop-color:#1447e6;stop-opacity:0.3" />
+          </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#heroGradient)" />
+        <circle cx="276" cy="200" r="80" fill="#1447e6" opacity="0.2"/>
+        <circle cx="400" cy="350" r="60" fill="#bcdaff" opacity="0.5"/>
+        <circle cx="150" cy="500" r="40" fill="#1447e6" opacity="0.3"/>
+        <path d="M100 300 Q276 200 450 400 Q300 600 100 500 Z" fill="#1447e6" opacity="0.1"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- About section with placeholder content -->
+  <div class="about-section">
+    <div class="about-container">
+      <div class="who-we-are-section">
+        <div class="about-heading">Who We Are</div>
+        <div class="sub-heading">
+          At ElectrifyLabs, we are committed to driving innovation through cutting-edge technology. Our mission is to deliver smart, electrifying solutions that enhance performance and reliability across various industries.
+        </div>
+      </div>
+
+      <div class="about-content-section">
+        <div class="placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="400" viewBox="0 0 582 487" fill="none">
+            <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+            <rect x="50" y="50" width="482" height="387" fill="#f3f4f6" rx="8"/>
+            <circle cx="291" cy="200" r="60" fill="#1447e6" opacity="0.2"/>
+            <rect x="100" y="320" width="382" height="20" fill="#1447e6" opacity="0.1" rx="10"/>
+            <rect x="150" y="360" width="282" height="15" fill="#1447e6" opacity="0.15" rx="7"/>
+          </svg>
+        </div>
+        <div class="about-right-content">
+          <div class="content-one">
+            <h1>75+</h1>
+            <h4>Global Branches Established</h4>
+            <p>Expanding our reach worldwide.</p>
+          </div>
+
+          <div class="content-two">
+            <div class="content-two-info">
+              <h1>15+</h1>
+              <h4>Industry Awards Won</h4>
+              <p>Recognized for excellence in manufacturing and automation.</p>
+            </div>
+
+            <div class="content-cta-section">
+              <div class="content-cta-section-container">
+                <h1>read more</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#1447e6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </div>
+              <hr class="about-cta">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service section -->
+  <div class="service-section">
+    <div class="service-container">
+      <div class="service-intro-section">
+        <div class="service-body-heading">our services</div>
+        <div class="service-heading">What We Offer: Innovative Solutions Tailored to Your Needs</div>
+      </div>
+
+      <div class="services-cards-section">
+        <div class="service-card-one">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+            </svg>
+          </div>
+          <div class="service-card-heading">Explore Our Comprehensive Range of Services</div>
+          <div class="service-card-subheading">At ElectrifyLabs, we provide cutting-edge technology solutions to drive your success.</div>
+        </div>
+
+        <div class="service-card-two">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <path d="M12 22v-5" />
+              <path d="M9 8V2" />
+              <path d="M15 8V2" />
+              <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" />
+            </svg>
+          </div>
+          <div class="service-card-two-heading">Product Engineering: Transforming Ideas into Reality</div>
+          <div class="service-card-two-subheading">Our team specializes in developing innovative products tailored to your specifications.</div>
+        </div>
+
+        <div class="service-card-three">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z" />
+              <path d="M17 21v-2" />
+              <path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10" />
+              <path d="M21 21v-2" />
+              <path d="M3 5V3" />
+              <path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z" />
+              <path d="M7 5V3" />
+            </svg>
+          </div>
+          <div class="service-card-three-heading">R&D Innovation: Pioneering Tomorrow's Technologies Today</div>
+          <div class="service-card-three-subheading">We invest in research and development to create groundbreaking tech solutions.</div>
+        </div>
+      </div>
+
+      <button class="service-btn">
+        <div class="service-btn-container">
+          view all services 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Product section with placeholder images -->
+  <div class="product-section">
+    <div class="product-container">
+      <div class="product-intro-section">
+        <div class="product-body-heading">discover products</div>
+        <div class="product-heading">Innovative solutions for your tech needs</div>
+      </div>
+
+      <div class="products-section">
+        <div class="top-section">
+          <div class="product-one">
+            <div class="product-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 394 462" fill="none">
+                <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+                <rect x="50" y="50" width="294" height="362" fill="#f3f4f6" rx="8"/>
+                <circle cx="197" cy="180" r="40" fill="#1447e6" opacity="0.3"/>
+                <rect x="80" y="280" width="234" height="15" fill="#1447e6" opacity="0.2" rx="7"/>
+                <rect x="120" y="310" width="154" height="12" fill="#1447e6" opacity="0.15" rx="6"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-content">
+                <div class="product-name">Smart Device</div>
+                <div class="product-price">$99</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-one">
+            <div class="product-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 394 462" fill="none">
+                <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+                <rect x="50" y="50" width="294" height="362" fill="#f3f4f6" rx="8"/>
+                <rect x="100" y="120" width="194" height="80" fill="#1447e6" opacity="0.2" rx="8"/>
+                <circle cx="197" cy="280" r="30" fill="#1447e6" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-content">
+                <div class="product-name">tech gadget</div>
+                <div class="product-price">$75</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-one">
+            <div class="best-seller">best sale</div>
+            <div class="product-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 394 462" fill="none">
+                <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+                <rect x="50" y="50" width="294" height="362" fill="#f3f4f6" rx="8"/>
+                <path d="M100 150 Q197 100 294 150 Q250 250 197 300 Q144 250 100 150 Z" fill="#1447e6" opacity="0.2"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-content">
+                <div class="product-name">innovative tool</div>
+                <div class="product-price">$120</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lower-section">
+          <div class="product-one">
+            <div class="best-seller">best sale</div>
+            <div class="product-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 394 462" fill="none">
+                <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+                <rect x="50" y="50" width="294" height="362" fill="#f3f4f6" rx="8"/>
+                <rect x="80" y="120" width="234" height="120" fill="#1447e6" opacity="0.15" rx="12"/>
+                <circle cx="150" cy="300" r="25" fill="#1447e6" opacity="0.3"/>
+                <circle cx="244" cy="300" r="25" fill="#1447e6" opacity="0.3"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-content">
+                <div class="product-name">gadget pro</div>
+                <div class="product-price">$150</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-one">
+            <div class="product-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 394 462" fill="none">
+                <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+                <rect x="50" y="50" width="294" height="362" fill="#f3f4f6" rx="8"/>
+                <circle cx="197" cy="200" r="50" fill="#1447e6" opacity="0.2"/>
+                <rect x="147" y="270" width="100" height="20" fill="#1447e6" opacity="0.25" rx="10"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-content">
+                <div class="product-name">Smart Accessory</div>
+                <div class="product-price">$85</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-one">
+            <div class="best-seller">best sale</div>
+            <div class="product-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 394 462" fill="none">
+                <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+                <rect x="50" y="50" width="294" height="362" fill="#f3f4f6" rx="8"/>
+                <rect x="100" y="100" width="194" height="150" fill="#1447e6" opacity="0.1" rx="12"/>
+                <rect x="120" y="280" width="154" height="30" fill="#1447e6" opacity="0.3" rx="15"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <div class="product-content">
+                <div class="product-name">Advanced Device</div>
+                <div class="product-price">$110</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-primary-btn-container">
+          view all products
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Library section -->
+  <div class="library-section">
+    <div class="library-container">
+      <div class="library-intro">
+        <p>Our Library</p>
+        <h1>Explore a wealth of tech resources at your fingertips</h1>
+      </div>
+      <div class="cards">
+        <div class="card-one">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="250" viewBox="0 0 622 346" fill="none">
+            <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+            <rect x="40" y="40" width="542" height="266" fill="#f3f4f6" rx="8"/>
+            <rect x="80" y="80" width="462" height="100" fill="#1447e6" opacity="0.1" rx="8"/>
+            <circle cx="150" cy="230" r="30" fill="#1447e6" opacity="0.2"/>
+            <rect x="200" y="210" width="342" height="20" fill="#1447e6" opacity="0.15" rx="10"/>
+            <rect x="200" y="240" width="242" height="15" fill="#1447e6" opacity="0.1" rx="7"/>
+          </svg>
+          <div class="card-one-content">
+            <p>Resources</p>
+            <h2>Latest Innovations in Technology</h2>
+            <h4>Discover cutting-edge insights and developments in our tech library.</h4>
+          </div>
+          <div class="person-details">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <div class="person-info">
+              <h4>Jane Doe</h4>
+              <div class="person-library-content">
+                <h4>15 Mar 2023</h4>
+                <h5>4 min read</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-one">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="250" viewBox="0 0 622 346" fill="none">
+            <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+            <rect x="40" y="40" width="542" height="266" fill="#f3f4f6" rx="8"/>
+            <rect x="80" y="80" width="462" height="120" fill="#1447e6" opacity="0.15" rx="8"/>
+            <circle cx="311" cy="220" r="40" fill="#1447e6" opacity="0.25"/>
+            <rect x="80" y="250" width="200" height="15" fill="#1447e6" opacity="0.2" rx="7"/>
+          </svg>
+          <div class="card-one-content">
+            <p>Whitepaper</p>
+            <h2>Understanding AI in Modern Tech</h2>
+            <h4>A comprehensive guide to AI applications in technology today.</h4>
+          </div>
+          <div class="person-details">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="#e5e7eb" stroke="#9ca3af" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <div class="person-info">
+              <h4>John Smith</h4>
+              <div class="person-library-content">
+                <h4>10 Feb 2023</h4>
+                <h5>6 min read</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="library-primary-btn">
+        <div class="library-primary-btn-container">
+          view our library
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+            <rect width="8" height="18" x="3" y="3" rx="1" />
+            <path d="M7 3v18" />
+            <path d="M20.4 18.9c.2.5-.1 1.1-.6 1.3l-1.9.7c-.5.2-1.1-.1-1.3-.6L11.1 5.1c-.2-.5.1-1.1.6-1.3l1.9-.7c.5-.2 1.1.1 1.3.6Z" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Blog section -->
+  <div class="blog-section">
+    <div class="blog-container">
+      <div class="blog-intro-section">
+        <p>blogs</p>
+        <h1>Latest Insights and Innovations</h1>
+      </div>
+
+      <div class="blogs-contents">
+        <div class="blog-one">
+          <svg xmlns="http://www.w3.org/2000/svg" width="442" height="288" viewBox="0 0 442 288" fill="none">
+            <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+            <rect x="30" y="30" width="382" height="228" fill="#f3f4f6" rx="8"/>
+            <circle cx="221" cy="120" r="50" fill="#1447e6" opacity="0.2"/>
+            <rect x="60" y="200" width="322" height="20" fill="#1447e6" opacity="0.15" rx="10"/>
+            <rect x="100" y="230" width="242" height="15" fill="#1447e6" opacity="0.1" rx="7"/>
+          </svg>
+          <div class="blog-content">
+            <div class="blog-heading">
+              <h1>Quantum Annealing in Energy Grids: Beyond Theoretical Limits</h1>
+              <p>As we approach 2026, quantum computing transitions from laboratory curiosity to industrial-scale utility. Our team at ElectrifyLabs Berlin has achieved a breakthrough: 127-qubit processors now optimize municipal power grids in real-time, reducing waste by 37% compared to classical algorithms.</p>
+            </div>
+            <div class="blog-cta">
+              <div class="blog-cta-content">
+                <p>3 july , 2025</p>
+                <h4>Read 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </h4>
+              </div>
+              <hr class="line">
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-one">
+          <svg xmlns="http://www.w3.org/2000/svg" width="442" height="288" viewBox="0 0 442 288" fill="none">
+            <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+            <rect x="30" y="30" width="382" height="228" fill="#f3f4f6" rx="8"/>
+            <rect x="60" y="60" width="322" height="100" fill="#1447e6" opacity="0.1" rx="12"/>
+            <circle cx="150" cy="200" r="30" fill="#1447e6" opacity="0.3"/>
+            <circle cx="292" cy="200" r="30" fill="#1447e6" opacity="0.25"/>
+          </svg>
+          <div class="blog-content">
+            <div class="blog-heading">
+              <h1>The Quantum Advantage Paradox</h1>
+              <p>By treating decoherence not as noise but as training data, our machine learning layer converts quantum instability into predictive power. This paradigm shift—documented in our recent IEEE paper—allows commercially available quantum processors to outperform supercomputers in specific load-balancing scenarios.</p>
+            </div>
+            <div class="blog-cta">
+              <div class="blog-cta-content">
+                <p>22 Aug , 2025</p>
+                <h4>Read 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </h4>
+              </div>
+              <hr class="line">
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-one">
+          <svg xmlns="http://www.w3.org/2000/svg" width="442" height="288" viewBox="0 0 442 288" fill="none">
+            <rect width="100%" height="100%" fill="#e5e7eb" rx="12"/>
+            <rect x="30" y="30" width="382" height="228" fill="#f3f4f6" rx="8"/>
+            <path d="M60 100 Q221 60 382 100 Q330 180 221 200 Q112 180 60 100 Z" fill="#1447e6" opacity="0.15"/>
+            <rect x="100" y="220" width="242" height="15" fill="#1447e6" opacity="0.2" rx="7"/>
+          </svg>
+          <div class="blog-content">
+            <div class="blog-heading">
+              <h1>Munich Case Study: From Theory to Grid Reality</h1>
+              <p>As we approach 2026, quantum computing transitions from laboratory curiosity to industrial-scale utility. Our team at ElectrifyLabs Berlin has achieved a breakthrough: 127-qubit processors now optimize municipal power grids in real-time, reducing waste by 37% compared to classical algorithms.</p>
+            </div>
+            <div class="blog-cta">
+              <div class="blog-cta-content">
+                <p>3 july , 2025</p>
+                <h4>Read 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </h4>
+              </div>
+              <hr class="line">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA section -->
+  <div class="cta-section">
+    <div class="cta-container">
+      <div class="cta-intro-section">
+        <p>Get in Touch</p>
+        <h1>We'd love to hear from you! Reach out with any questions or inquiries.</h1>
+      </div>
+      <div class="cta-btn">
+        <form class="cta-email-form" id="emailForm">
+          <div class="input-container">
+            <input type="email" class="email-input" id="emailInput" required autocomplete="email">
+            <label class="input-placeholder" for="emailInput">Enter your email address</label>
+          </div>
+          <button type="submit" class="email-btn" id="submitBtn">
+            <span class="btn-text">Request Access</span>
+            <div class="btn-spinner"></div>
+          </button>
+        </form>
+        <h4>accepts the cookies.<span>OKAY</span></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer section -->
+  <div class="footer-section">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1447e6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide">
+                <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+              </svg>
+              electrifylabs
+            </div>
+            <div class="footer-contact">+1 (555) 123-4567</div>
+            <div class="footer-email">contact@electrifylabs.com</div>
+          </div>
+          <div class="footer-links">
+            <div class="navigation-content">
+              <h4>Navigation</h4>
+              <a href="#">about</a>
+              <a href="#">service</a>
+              <a href="#">product</a>
+              <div class="new-tag">new</div>
+              <a href="#">library</a>
+              <a href="#">blogs</a>
+            </div>
+
+            <div class="follow-content">
+              <h4>follow us</h4>
+              <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+              <a href="https://twitter.com/" target="_blank">Twitter</a>
+              <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            </div>
+
+            <div class="legel-content">
+              <h4>legel</h4>
+              <a href="#">Terms & Conditions</a>
+              <a href="#">privacy policy</a>
+              <a href="#">esg policy</a>
+            </div>
+          </div>
+        </div>
+
+        <hr class="footer-line">
+        <p>© 2025 ElectrifyLabs. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      
+      if (!mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+        mobileNav.classList.remove('active');
+      }
+    });
+
+    // Email form functionality
+    document.getElementById('emailForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const emailInput = document.getElementById('emailInput');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      // Basic email validation
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) {
+        showNotification('Please enter a valid email address', 'error');
+        return;
+      }
+      
+      // Show loading state
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      // Simulate API call
+      setTimeout(function() {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        emailInput.value = '';
+        showNotification('Thank you! We\'ll be in touch soon.', 'success');
+      }, 2000);
+    });
+
+    // Input placeholder animation
+    const emailInput = document.getElementById('emailInput');
+    const placeholder = document.querySelector('.input-placeholder');
+
+    emailInput.addEventListener('focus', function() {
+      placeholder.classList.add('active');
+      document.querySelector('.cta-email-form').classList.add('focused');
+    });
+
+    emailInput.addEventListener('blur', function() {
+      if (!emailInput.value) {
+        placeholder.classList.remove('active');
+      }
+      document.querySelector('.cta-email-form').classList.remove('focused');
+    });
+
+    emailInput.addEventListener('input', function() {
+      if (emailInput.value) {
+        placeholder.classList.add('active');
+      } else {
+        placeholder.classList.remove('active');
+      }
+    });
+
+    // Notification system
+    function showNotification(message, type = 'success') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideOutUp 0.5s ease forwards';
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 500);
+      }, 3000);
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add ripple effect to buttons
+    function createRipple(event) {
+      const button = event.currentTarget;
+      const circle = document.createElement('span');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+      circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+      circle.classList.add('ripple');
+
+      const ripple = button.getElementsByClassName('ripple')[0];
+      if (ripple) {
+        ripple.remove();
+      }
+
+      button.appendChild(circle);
+    }
+
+    // Add ripple effect to all buttons
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', createRipple);
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections for animation
+    document.querySelectorAll('.about-section, .service-section, .product-section, .library-section, .blog-section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(50px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>: 

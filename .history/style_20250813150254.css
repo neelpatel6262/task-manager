@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* #follow-btn{
+  color: rgb(255, 255, 255);
+  background-color: orangered;
+  height: 50px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+} */
+
+* {  
+box-sizing: border-box;  
+}  
+body {  
+background: linear-gradiet (135deg, #74ebd5  
+■#9face6);  
+font-family: 'Segoe UI', Tahoma, Geneva,  
+Verdana, sans-serif;  
+display: flex;  
+justify-content: center;  
+align-items: center;  
+height: 100vh;  
+margin: 0;  
+.form-container {  
+background: white;  
+padding: 40px 30px;  
+border-radius: 10px;  
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);  
+width: 100%;  
+max-width: 400px;  
+}  
+.form-container h2  
+text-align: cente  
+margin-bottom: 25  
+color: #333;  
+}  
+.form-group {  
+margin-bottom: 20px;  
+}  

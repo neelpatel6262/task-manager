@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ font-family: "DM Mono", monospace;
+ background-color:oklch(0.869 0.022 252.894);
+}
+
+h1{
+  align-items: center;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.form{
+  background-color: blanchedalmond;
+  padding: 120px 100px;
+}
+
