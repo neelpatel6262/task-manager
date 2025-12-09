@@ -4,21 +4,10 @@
     const taskCount = document.getElementById('taskCount');
     const clearAllBtn = document.getElementById('clearAllBtn');
     const emptyState = document.getElementById('emptyState');
-    const prioritySelect = document.getElementById('prioritySelect');
-    const toggleDocsBtn = document.getElementById('toggleDocs');
-    const docsContent = document.getElementById('docsContent');
+
 
     let tasks = [];
 
-    // Toggle documentation section
-    if (toggleDocsBtn && docsContent) {
-      toggleDocsBtn.addEventListener('click', function() {
-        docsContent.classList.toggle('hidden');
-        toggleDocsBtn.textContent = docsContent.classList.contains('hidden') 
-          ? '📖 Show Documentation' 
-          : '📖 Hide Documentation';
-      });
-    }
 
     document.addEventListener('DOMContentLoaded', function () {
       loadTasks();
@@ -52,9 +41,10 @@
 
     function addTask() {
       const taskText = taskInput.value.trim(); // Remove extra spaces
-      const priority = prioritySelect.value; // Get selected priority
+
 
       if (taskText === '') {
+
         taskInput.style.borderColor = '#ef4444';
         taskInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
 
@@ -66,26 +56,30 @@
         return;
       }
 
+
       if (taskText.length > 100) {
         alert('Task is too long. Please keep it under 100 characters.');
         return;
       }
 
+
       const newTask = {
         id: Date.now(),
         text: taskText,
         completed: false,
-        priority: priority, // Add priority to task object
         createdAt: new Date().toISOString()
       };
 
+
       tasks.unshift(newTask);
 
+
       taskInput.value = '';
-      prioritySelect.value = 'medium'; // Reset to default priority
+
 
       saveTasks();
       updateUI();
+
 
       addBtn.style.transform = 'scale(0.95)';
       setTimeout(() => {
@@ -166,25 +160,11 @@
 
     function createTaskElement(task) {
       const li = document.createElement('li');
-      li.className = `task-item ${task.completed ? 'completed' : ''} priority-${task.priority}`;
+      li.className = `task-item ${task.completed ? 'completed' : ''}`;
       li.setAttribute('data-task-id', task.id);
 
-      // Determine priority icon/text
-      let priorityIcon = '';
-      switch(task.priority) {
-        case 'high':
-          priorityIcon = '🔴';
-          break;
-        case 'medium':
-          priorityIcon = '🟡';
-          break;
-        case 'low':
-          priorityIcon = '🟢';
-          break;
-      }
 
       li.innerHTML = `
-                <div class="task-priority">${priorityIcon}</div>
                 <div class="task-checkbox ${task.completed ? 'checked' : ''}" 
                      onclick="toggleTask(${task.id})" 
                      role="checkbox" 
@@ -198,6 +178,7 @@
                         title="Delete task">
                 </button>
             `;
+
 
       const checkbox = li.querySelector('.task-checkbox');
       checkbox.addEventListener('keypress', function (e) {

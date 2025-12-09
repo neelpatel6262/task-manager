@@ -424,7 +424,6 @@
     .documentation-section {
       margin-top: 20px;
       padding: 0 24px 24px 24px;
-      text-align: center; /* Center the toggle button */
     }
 
     .docs-toggle-btn {
@@ -437,10 +436,9 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
-      display: inline-flex; /* Changed to inline-flex for better centering */
+      display: flex;
       align-items: center;
       gap: 8px;
-      margin: 0 auto; /* Center the button */
     }
 
     .docs-toggle-btn:hover {
@@ -453,7 +451,6 @@
       border-radius: 12px;
       padding: 20px;
       margin-top: 16px;
-      text-align: left; /* Align content to the start */
     }
 
     .docs-content.hidden {
@@ -597,17 +594,5 @@
 
       .info-icon {
         font-size: 1.2rem;
-      }
-
-      .documentation-section {
-        padding: 0 16px 16px 16px;
-      }
-
-      .docs-content {
-        padding: 16px;
-      }
-
-      .docs-content h2 {
-        font-size: 1.3rem;
       }
     }

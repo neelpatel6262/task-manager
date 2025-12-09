@@ -443,10 +443,6 @@
       margin: 0 auto; /* Center the button */
     }
 
-    .docs-toggle-btn:hover {
-      background: #cbd5e1;
-    }
-
     .docs-content {
       background: #f8fafc;
       border: 1px solid #e2e8f0;

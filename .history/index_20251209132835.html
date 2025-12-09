@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task Manager - Your Personal Productivity Assistant</title>
-  <link rel="icon" type="image/svg" href="/Assets/circle-check-big (1).svg" sizes="16x16">
+  <title>Task Manager</title>
+  <link rel="icon" type="image/svg" href="Assets/circle-check-big.svg" sizes="16x16">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -27,9 +27,9 @@
       <div class="input-container">
         <input type="text" id="taskInput" placeholder="What needs to be done?" maxlength="100">
         <select id="prioritySelect" class="priority-select">
-          <option value="low">🟢 Low Priority</option>
-          <option value="medium" selected>🟡 Medium Priority</option>
-          <option value="high">🔴 High Priority</option>
+          <option value="low">Low Priority</option>
+          <option value="medium" selected>Medium Priority</option>
+          <option value="high">High Priority</option>
         </select>
         <button id="addBtn" class="add-btn" type="button">
           <span class="btn-text">Add Task</span>
@@ -61,37 +61,7 @@
   </div>
 
   <div class="storage-info">
-    <div class="info-icon">ℹ️</div>
     <p>Your tasks are stored in your browser (localStorage). Your data will persist until your computer explodes or you delete your browser.</p>
-  </div>
-
-  <!-- Documentation Section -->
-  <div class="documentation-section">
-    <button id="toggleDocs" class="docs-toggle-btn">📖 Show Documentation</button>
-    <div id="docsContent" class="docs-content hidden">
-      <h2>Task Manager - Your Personal Productivity Assistant</h2>
-      
-      <h3>Features</h3>
-      <ul>
-        <li><strong>Task Management:</strong> Add, complete, and delete tasks</li>
-        <li><strong>Priority System:</strong> Set High (🔴), Medium (🟡), or Low (🟢) priority levels</li>
-        <li><strong>Data Persistence:</strong> Tasks saved automatically to your browser's localStorage</li>
-        <li><strong>Responsive Design:</strong> Works on desktop and mobile devices</li>
-      </ul>
-      
-      <h3>How to Use</h3>
-      <ol>
-        <li>Type your task in the input field</li>
-        <li>Select a priority level</li>
-        <li>Click "Add Task" or press Enter</li>
-        <li>Check the box to mark tasks as completed</li>
-        <li>Use the × button to delete individual tasks</li>
-        <li>Use "Clear All" to remove all tasks</li>
-      </ol>
-      
-      <h3>Privacy & Data</h3>
-      <p>All data is stored locally in your browser. No information is sent to any server. Your tasks will persist until you clear your browser data.</p>
-    </div>
   </div>
 
   <script src="script.js"></script>

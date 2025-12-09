@@ -16,8 +16,7 @@
 
     /* Container */
     .container {
-      max-width: 800px;
-      width: 100%;
+      max-width: 600px;
       margin: 0 auto;
       background: white;
       border-radius: 16px;
@@ -72,7 +71,6 @@
       background: #f8fafc;
       transition: all 0.2s ease;
       outline: none;
-      min-width: 0; /* Allow input to shrink */
     }
 
     #taskInput:focus {
@@ -86,7 +84,7 @@
     }
 
     .priority-select {
-      padding: 14px 30px 14px 16px; /* Increased right padding for the arrow */
+      padding: 14px 16px;
       border: 2px solid #e2e8f0;
       border-radius: 12px;
       font-size: 1rem;
@@ -96,12 +94,10 @@
       transition: all 0.2s ease;
       outline: none;
       cursor: pointer;
-      flex: 0 0 auto; /* Allow automatic sizing based on content */
+      flex: 0 0 150px;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      min-width: 180px; /* Ensure minimum width for proper display */
-      width: auto; /* Allow width to adjust to content */
     }
 
     .priority-select:focus {
@@ -375,24 +371,8 @@
     }
 
     .priority-indicator {
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    .priority-indicator.priority-high {
-      background-color: rgba(239, 68, 68, 0.1);
-      color: #ef4444;
-    }
-
-    .priority-indicator.priority-medium {
-      background-color: rgba(245, 158, 11, 0.1);
-      color: #f59e0b;
-    }
-
-    .priority-indicator.priority-low {
-      background-color: rgba(16, 185, 129, 0.1);
-      color: #10b981;
+      margin-right: 10px;
+      font-size: 1.2rem;
     }
 
     /* Storage Info */
@@ -418,74 +398,6 @@
 
     .info-icon {
       font-size: 1.5rem;
-    }
-
-    /* Documentation Section */
-    .documentation-section {
-      margin-top: 20px;
-      padding: 0 24px 24px 24px;
-      text-align: center; /* Center the toggle button */
-    }
-
-    .docs-toggle-btn {
-      background: #e2e8f0;
-      color: #334155;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 16px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex; /* Changed to inline-flex for better centering */
-      align-items: center;
-      gap: 8px;
-      margin: 0 auto; /* Center the button */
-    }
-
-    .docs-toggle-btn:hover {
-      background: #cbd5e1;
-    }
-
-    .docs-content {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 16px;
-      text-align: left; /* Align content to the start */
-    }
-
-    .docs-content.hidden {
-      display: none;
-    }
-
-    .docs-content h2 {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
-      color: #1e293b;
-    }
-
-    .docs-content h3 {
-      font-size: 1.1rem;
-      margin: 20px 0 12px 0;
-      color: #334155;
-    }
-
-    .docs-content ul,
-    .docs-content ol {
-      padding-left: 20px;
-      margin-bottom: 16px;
-    }
-
-    .docs-content li {
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .docs-content p {
-      line-height: 1.6;
-      color: #64748b;
     }
 
     /* Animations */
@@ -525,7 +437,6 @@
 
       .container {
         border-radius: 12px;
-        max-width: 100%;
       }
 
       .header {
@@ -553,6 +464,10 @@
       .add-btn {
         width: 100%;
         justify-content: center;
+      }
+
+      .priority-guide {
+        padding: 0 20px 16px 20px;
       }
 
       .tasks-section {
@@ -597,17 +512,5 @@
 
       .info-icon {
         font-size: 1.2rem;
-      }
-
-      .documentation-section {
-        padding: 0 16px 16px 16px;
-      }
-
-      .docs-content {
-        padding: 16px;
-      }
-
-      .docs-content h2 {
-        font-size: 1.3rem;
       }
     }

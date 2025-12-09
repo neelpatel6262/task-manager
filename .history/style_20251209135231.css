@@ -453,7 +453,6 @@
       border-radius: 12px;
       padding: 20px;
       margin-top: 16px;
-      text-align: left; /* Align content to the start */
     }
 
     .docs-content.hidden {

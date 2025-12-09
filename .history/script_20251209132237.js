@@ -5,20 +5,9 @@
     const clearAllBtn = document.getElementById('clearAllBtn');
     const emptyState = document.getElementById('emptyState');
     const prioritySelect = document.getElementById('prioritySelect');
-    const toggleDocsBtn = document.getElementById('toggleDocs');
-    const docsContent = document.getElementById('docsContent');
 
     let tasks = [];
 
-    // Toggle documentation section
-    if (toggleDocsBtn && docsContent) {
-      toggleDocsBtn.addEventListener('click', function() {
-        docsContent.classList.toggle('hidden');
-        toggleDocsBtn.textContent = docsContent.classList.contains('hidden') 
-          ? '📖 Show Documentation' 
-          : '📖 Hide Documentation';
-      });
-    }
 
     document.addEventListener('DOMContentLoaded', function () {
       loadTasks();
