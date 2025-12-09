@@ -260,7 +260,7 @@ Have questions or suggestions? Feel free to reach out:
 
 ## 🙏 Acknowledgments
 
-- Inspired by the **Matter** task management app philosophy
+- Inspired by the https://hihayk.github.io/matter/ task management app philosophy
 - Built with vanilla web technologies for maximum compatibility
 - Designed with accessibility and user experience in mind
 
