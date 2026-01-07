@@ -6,8 +6,8 @@
     }
 
     body {
-      background: rgb(247, 244, 244);
-      color: #1e293b;
+      background: #0f172a;
+      color: #f1f5f9;
       line-height: 1.6;
       min-height: 100vh;
       padding: 20px;
@@ -18,9 +18,10 @@
       max-width: 800px;
       width: 100%;
       margin: 0 auto;
-      background: white;
+      background: #0f172a;
+      border: 2px solid #64748b;
       border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 0 30px rgba(100, 116, 139, 0.5);
       overflow: hidden;
       transition: box-shadow 0.3s ease;
     }
@@ -31,20 +32,22 @@
 
     /* Header */
     .header {
-      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+      background: #334155;
       color: white;
       padding: 32px 24px;
       text-align: center;
+      border-bottom: 2px solid #64748b;
     }
 
     .title {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 2.5rem;
+      font-weight: 700;
       margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
     .subtitle {
-      font-size: 1rem;
+      font-size: 1.2rem;
       opacity: 0.9;
       font-weight: 300;
     }

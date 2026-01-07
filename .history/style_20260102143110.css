@@ -6,7 +6,8 @@
     }
 
     body {
-      background: rgb(247, 244, 244);
+      background:   radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%);
       color: #1e293b;
       line-height: 1.6;
       min-height: 100vh;
@@ -452,7 +453,6 @@
       border-radius: 12px;
       padding: 20px;
       margin-top: 16px;
-      text-align: left; /* Align content to the start */
     }
 
     .docs-content.hidden {
